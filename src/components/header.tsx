@@ -1,10 +1,14 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Search, X } from "lucide-react";
 
 import Logo from "../images/logo-tasks.png";
+import { useSearchBar } from "../store/searchBar";
 
 export function Header() {
+  const setSearchBarValue = useSearchBar((store) => store.setSearchBarValue);
+
   return (
     <header className="bg-white flex justify-between gap-4 h-24 w-full ps-6 pe-6 shadow-md shadow-zinc-400 items-center">
       <div className="flex gap-4 w-full items-center">
@@ -15,11 +19,16 @@ export function Header() {
             type="text"
             placeholder="Pesquisar notas"
             className="bg-white border-none w-full h-full text-sm placeholder-zinc-400 focus-visible:outline-none"
+            onChange={(event) => setSearchBarValue(event.target.value)}
           />
           <Search color="#464646" className="cursor-pointer" />
         </div>
       </div>
-      <X color="#464646" className="cursor-pointer" />
+      <X
+        color="#464646"
+        className="cursor-pointer"
+        onClick={() => window.close()}
+      />
     </header>
   );
 }
