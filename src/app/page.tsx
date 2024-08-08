@@ -1,5 +1,9 @@
-import Image from "next/image";
+import { Header } from "../components/header";
 
 export default function Home() {
-  return <main className="pb-24 ps-3 pe-3 flex flex-col gap-10"></main>;
+  return (
+    <main className="pb-24 flex flex-col gap-10">
+      <Header></Header>
+    </main>
+  );
 }
