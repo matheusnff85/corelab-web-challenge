@@ -1,24 +1,25 @@
 import React from "react";
 import Image from "next/image";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 
 import Logo from "../images/logo-tasks.png";
 
 export function Header() {
   return (
-    <header className="bg-white flex gap-4 h-20 w-screen ps-6 pe-6 shadow-md shadow-zinc-400 items-center">
-      <div className="flex gap-4 items-center">
+    <header className="bg-white flex justify-between gap-4 h-24 w-full ps-6 pe-6 shadow-md shadow-zinc-400 items-center">
+      <div className="flex gap-4 w-full items-center">
         <Image src={Logo} alt="Logo do CoreNotes" />
-        <span>CoreNotes</span>
+        <span className="mr-1">CoreNotes</span>
+        <div className="flex items-center justify-between max-w-lg w-full p-2 rounded-md shadow-md shadow-zinc-400 hover:shadow-zinc-500">
+          <input
+            type="text"
+            placeholder="Pesquisar notas"
+            className="bg-white border-none w-full h-full text-sm placeholder-zinc-400 focus-visible:outline-none"
+          />
+          <Search color="#464646" className="cursor-pointer" />
+        </div>
       </div>
-      <div className="flex items-center justify-between max-w-lg w-full h-1/2 p-3 rounded-md shadow-sm shadow-zinc-800">
-        <input
-          type="text"
-          placeholder="Pesquisar notas"
-          className="bg-white border-none w-full h-full text-base placeholder-zinc-600 focus-visible:outline-none"
-        />
-        <Search color="#464646" />
-      </div>
+      <X color="#464646" className="cursor-pointer" />
     </header>
   );
 }
