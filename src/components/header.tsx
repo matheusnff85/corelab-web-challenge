@@ -8,6 +8,7 @@ import { useSearchBar } from "../store/searchBar";
 
 export function Header() {
   const setSearchBarValue = useSearchBar((store) => store.setSearchBarValue);
+  const searchBarValue = useSearchBar((state) => state.searchBarValue);
 
   return (
     <header className="bg-white flex justify-between gap-4 h-24 w-full ps-6 pe-6 shadow-md shadow-zinc-400 items-center">
@@ -19,9 +20,18 @@ export function Header() {
             type="text"
             placeholder="Pesquisar notas"
             className="bg-white border-none w-full h-full text-sm placeholder-zinc-400 focus-visible:outline-none"
+            value={searchBarValue}
             onChange={(event) => setSearchBarValue(event.target.value)}
           />
-          <Search color="#464646" className="cursor-pointer" />
+          {searchBarValue.length > 0 ? (
+            <X
+              color="#464646"
+              className="cursor-pointer"
+              onClick={() => setSearchBarValue("")}
+            />
+          ) : (
+            <Search color="#464646" className="cursor-pointer" />
+          )}
         </div>
       </div>
       <X
