@@ -67,8 +67,10 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
 
   filterTasks: (searchTerm: string) => {
     const tasks = get().tasks;
-    const filtered = tasks.filter((task) =>
-      task.title.toLowerCase().includes(searchTerm.toLowerCase())
+    const filtered = tasks.filter(
+      (task) =>
+        task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        task.content.toLowerCase().includes(searchTerm.toLowerCase())
     );
     set({ filteredTasks: filtered });
   },
