@@ -2,6 +2,10 @@
 
 Abaixo segue algumas decisões que tomei e funcionalidades da WEB.
 
+Link do repositorio de front end
+
+- https://github.com/matheusnff85/corelab-web-challenge
+
 Link abaixo para o vídeo demonstrando e explicando sobre o app
 
 - https://www.youtube.com/watch?v=cSbDV5AMkCE
