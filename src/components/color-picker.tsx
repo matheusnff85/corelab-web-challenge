@@ -49,7 +49,7 @@ export function ColorPicker({
     toast.success("Cor atualizada!");
   };
   return (
-    <div className="absolute bg-white p-2 rounded-md border border-zinc-200 shadow-md z-10 top-2 left-4 mt-8 grid lg:grid-cols-12 grid-cols-6 gap-2 min-w-max ">
+    <div className="absolute bg-white p-2 rounded-md border border-zinc-200 shadow-md z-10 top-2 left-0 md:left-[-4rem] mt-8 grid lg:grid-cols-12 grid-cols-6 gap-2 min-w-max ">
       {colors
         .filter((color) => color !== taskColor)
         .map((color, index) => (

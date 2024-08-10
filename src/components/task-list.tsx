@@ -26,7 +26,7 @@ export function TaskList() {
         <>
           <div>
             <h1 className="text-zinc-800 text-xl mb-7 pl-8">Favoritas</h1>
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] place-items-center gap-14 sm:grid-cols-[repeat(auto-fill,minmax(370px,1fr))] mx-5">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] place-items-center gap-14 sm:grid-cols-[repeat(auto-fill,minmax(470px,1fr))] mx-3">
               {(filteredTasks.length > 0 ? filteredTasks : tasks)
                 ?.filter((task) => task.isFavorite)
                 .map((task) => {
@@ -36,7 +36,7 @@ export function TaskList() {
           </div>
           <div>
             <h1 className="text-zinc-800 text-xl mb-7 pl-8">Outras</h1>
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] place-items-center gap-14 sm:grid-cols-[repeat(auto-fill,minmax(370px,1fr))] mx-5">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] place-items-center gap-14 sm:grid-cols-[repeat(auto-fill,minmax(470px,1fr))] mx-3">
               {(filteredTasks.length > 0 ? filteredTasks : tasks)
                 ?.filter((task) => !task.isFavorite)
                 .map((task) => {

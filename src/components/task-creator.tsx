@@ -29,7 +29,7 @@ export function TaskCreator() {
   };
 
   return (
-    <div className="md:w-[550px] bg-white mt-4 mb-10 rounded-2xl w-80 mx-auto shadow-md shadow-zinc-400">
+    <div className="min-w-80 md:w-[550px] bg-white mb-4 rounded-2xl w-80 mx-auto shadow-md shadow-zinc-400">
       <div className="flex items-center py-5 px-4 justify-between border-b-2 border-b-gray-100 w-full">
         <input
           type="text"
