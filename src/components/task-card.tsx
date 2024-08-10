@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Check, PaintBucket, Pencil, Star, X } from "lucide-react";
 
-import { ITask } from "../store/taskStore";
+import { ITask, useTaskStore } from "../store/taskStore";
 import { ColorPicker } from "./color-picker";
 
 interface taskCardProps {
@@ -17,6 +17,20 @@ export function TaskCard({ task }: taskCardProps) {
   const [taskColor, setTaskColor] = useState(color);
   const [isEditing, setIsEditing] = useState(false);
   const [colorPickerHidden, setColorPickerHidden] = useState(true);
+  const taskStore = useTaskStore((store) => store);
+
+  const editTask = async (type: string) => {
+    const editedTask = {
+      id,
+      title: taskTitle,
+      content: taskContent,
+      color: taskColor,
+      isFavorite: type === "fav" ? !isFavorited : isFavorited,
+    };
+
+    await taskStore.updateTask(id as string, editedTask);
+    setIsEditing(false);
+  };
 
   return (
     <div
@@ -25,25 +39,36 @@ export function TaskCard({ task }: taskCardProps) {
       style={{ backgroundColor: taskColor }}
     >
       <div className="flex items-center py-5 px-4 justify-between border-b-2 border-b-gray-100 w-full">
-        <input
-          type="text"
-          placeholder="Título"
-          className="outline-none"
-          value={taskTitle}
-          onChange={(e) => setTaskTitle(e.target.value)}
-        />
+        {isEditing ? (
+          <input
+            type="text"
+            placeholder="Título"
+            style={{ backgroundColor: taskColor }}
+            className="outline-none"
+            value={taskTitle}
+            onChange={(e) => setTaskTitle(e.target.value)}
+          />
+        ) : (
+          <h1>{task.title}</h1>
+        )}
         {isFavorited ? (
           <Star
             size={25}
             fill="#FFC222"
             className="cursor-pointer"
-            onClick={() => setFavorite(false)}
+            onClick={() => {
+              setFavorite(false);
+              editTask("fav");
+            }}
           />
         ) : (
           <Star
             size={25}
             className="cursor-pointer"
-            onClick={() => setFavorite(true)}
+            onClick={() => {
+              setFavorite(true);
+              editTask("fav");
+            }}
           />
         )}
       </div>
@@ -58,7 +83,11 @@ export function TaskCard({ task }: taskCardProps) {
 
       <div className="flex w-full justify-between items-center p-2">
         <div className="relative flex gap-3 px-3 py-3">
-          <Pencil size={25} className="cursor-pointer"></Pencil>
+          <Pencil
+            size={25}
+            onClick={() => setIsEditing(!isEditing)}
+            className="cursor-pointer"
+          ></Pencil>
           <PaintBucket
             size={25}
             className="cursor-pointer"
@@ -74,7 +103,7 @@ export function TaskCard({ task }: taskCardProps) {
           )}
         </div>
         <div className="relative flex gap-3 px-3 py-3">
-          {isEditing && <Check></Check>}
+          {isEditing && <Check onClick={() => editTask("normal")}></Check>}
           <X></X>
         </div>
       </div>
