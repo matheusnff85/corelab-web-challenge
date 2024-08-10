@@ -66,4 +66,4 @@ npm run build
 
 ## Demonstração das funcionalidades
 
-[![Demonstração do APP](https://i.imgur.com/T2p37LZ.mp4)](https://i.imgur.com/T2p37LZ.mp4)
+-**Link para o vídeo** https://www.youtube.com/watch?v=cSbDV5AMkCE
