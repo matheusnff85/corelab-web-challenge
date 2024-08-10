@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Check, PaintBucket, Pencil, Star, X } from "lucide-react";
 
 import { ITask } from "../store/taskStore";
+import { ColorPicker } from "./color-picker";
 
 interface taskCardProps {
   task: ITask;
@@ -15,11 +16,13 @@ export function TaskCard({ task }: taskCardProps) {
   const [taskContent, setTaskContent] = useState(content);
   const [taskColor, setTaskColor] = useState(color);
   const [isEditing, setIsEditing] = useState(false);
+  const [colorPickerHidden, setColorPickerHidden] = useState(true);
 
   return (
     <div
-      className="md:w-[550px] bg-white mt-4 mb-10 rounded-2xl w-80 mx-auto shadow-md shadow-zinc-400"
-      key={task.id}
+      className={`flex flex-col relative rounded-3xl transition-colors duration-500 ease-in-out shadow-2xl p-2 text-base min-w-96 max-w-md min-h-128 sm:max-w-xl`}
+      key={id}
+      style={{ backgroundColor: taskColor }}
     >
       <div className="flex items-center py-5 px-4 justify-between border-b-2 border-b-gray-100 w-full">
         <input
@@ -54,11 +57,23 @@ export function TaskCard({ task }: taskCardProps) {
       />
 
       <div className="flex w-full justify-between items-center p-2">
-        <div>
-          <Pencil></Pencil>
-          <PaintBucket size={25} className="cursor-pointer" />
+        <div className="relative flex gap-3 px-3 py-3">
+          <Pencil size={25} className="cursor-pointer"></Pencil>
+          <PaintBucket
+            size={25}
+            className="cursor-pointer"
+            onClick={() => setColorPickerHidden(!colorPickerHidden)}
+          />
+          {!colorPickerHidden && (
+            <ColorPicker
+              taskId={id as string}
+              taskColor={taskColor}
+              setTaskColor={setTaskColor}
+              closeColorPicker={setColorPickerHidden}
+            />
+          )}
         </div>
-        <div>
+        <div className="relative flex gap-3 px-3 py-3">
           {isEditing && <Check></Check>}
           <X></X>
         </div>

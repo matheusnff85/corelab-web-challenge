@@ -30,8 +30,8 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
     const createdTask: ITask = { ...newTask, id };
 
     set((state) => ({
-      tasks: [...state.tasks, createdTask],
-      filteredTasks: [...state.tasks, createdTask],
+      tasks: [createdTask, ...state.tasks],
+      filteredTasks: [createdTask, ...state.tasks],
     }));
   },
 
@@ -52,8 +52,8 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
     });
   },
 
-  updateTask: async (taskId: string, updatedTask: ITask) => {
-    await api.put(`/tasks/${taskId}`, updatedTask);
+  updateTask: async (taskId, updatedTask: ITask) => {
+    await api.patch(`/tasks/${taskId}`, updatedTask);
     set((state) => {
       const updatedTasks = state.tasks.map((task) =>
         task.id === taskId ? updatedTask : task

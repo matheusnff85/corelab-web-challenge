@@ -14,7 +14,6 @@ export function TaskCreator() {
   const isActiveAddBtn = taskTitle.length > 1 && taskContent.length > 1;
 
   const createTask = async () => {
-    console.log(taskTitle, taskContent, taskColor, isFavorited);
     await taskStore.createTask({
       title: taskTitle,
       content: taskContent,
@@ -24,7 +23,7 @@ export function TaskCreator() {
     setFavorite(false);
     setTaskTitle("");
     setTaskContent("");
-    setTaskColor("#FFFFF");
+    setTaskColor("#FFFFFF");
   };
 
   return (

@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      minHeight: {
+        "128": "32rem",
+      },
+      minWidth: {
+        "100": "25rem",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
