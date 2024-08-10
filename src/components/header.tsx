@@ -32,7 +32,10 @@ export function Header() {
             <X
               color="#464646"
               className="cursor-pointer"
-              onClick={() => setSearchBarValue("")}
+              onClick={() => {
+                setSearchBarValue("");
+                filterTasks("");
+              }}
             />
           ) : (
             <Search color="#464646" className="cursor-pointer" />

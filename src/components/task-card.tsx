@@ -4,6 +4,7 @@ import { Check, PaintBucket, Pencil, Star, X } from "lucide-react";
 
 import { ITask, useTaskStore } from "../store/taskStore";
 import { ColorPicker } from "./color-picker";
+import { toast } from "react-toastify";
 
 interface taskCardProps {
   task: ITask;
@@ -30,6 +31,7 @@ export function TaskCard({ task }: taskCardProps) {
 
     await taskStore.updateTask(id as string, editedTask);
     setIsEditing(false);
+    toast.success("Tarefa atualizada!");
   };
 
   return (

@@ -26,8 +26,8 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
 
   createTask: async (newTask: ITask) => {
     const response = await api.post("/tasks", newTask);
-    const { id } = response.data;
-    const createdTask: ITask = { ...newTask, id };
+    const { taskId } = response.data;
+    const createdTask: ITask = { id: taskId, ...newTask };
 
     set((state) => ({
       tasks: [createdTask, ...state.tasks],
@@ -58,9 +58,12 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
       const updatedTasks = state.tasks.map((task) =>
         task.id === taskId ? updatedTask : task
       );
+      const updatedFilteredTasks = state.filteredTasks.map((task) =>
+        task.id === taskId ? updatedTask : task
+      );
       return {
         tasks: updatedTasks,
-        filteredTasks: updatedTasks,
+        filteredTasks: updatedFilteredTasks,
       };
     });
   },

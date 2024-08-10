@@ -2,6 +2,7 @@
 import React from "react";
 
 import { useTaskStore, ITask } from "../store/taskStore";
+import { toast } from "react-toastify";
 
 interface colorPickerProps {
   taskId: string;
@@ -45,6 +46,7 @@ export function ColorPicker({
       isFavorite,
     });
     closeColorPicker(true);
+    toast.success("Cor atualizada!");
   };
   return (
     <div className="absolute bg-white p-2 rounded-md border border-zinc-200 shadow-md z-10 top-2 left-4 mt-8 grid lg:grid-cols-12 grid-cols-6 gap-2 min-w-max ">

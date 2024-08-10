@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Star } from "lucide-react";
 
 import { useTaskStore } from "../store/taskStore";
+import { toast } from "react-toastify";
 
 export function TaskCreator() {
   const [isFavorited, setFavorite] = useState(false);
@@ -24,6 +25,7 @@ export function TaskCreator() {
     setTaskTitle("");
     setTaskContent("");
     setTaskColor("#FFFFFF");
+    toast.success("Tarefa criada!");
   };
 
   return (
