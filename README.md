@@ -2,6 +2,10 @@
 
 Abaixo segue algumas decisões que tomei e funcionalidades da WEB.
 
+Link abaixo para o vídeo demonstrando e explicando sobre o app
+
+- https://www.youtube.com/watch?v=cSbDV5AMkCE
+
 ## Stacks utilizadas
 
 - **Next.js:** Framework React para desenvolvimento de aplicações web com renderização do lado do servidor e geração de sites estáticos.
@@ -63,7 +67,3 @@ npm run build
 ```bash
   http://localhost:3000/
 ```
-
-## Demonstração das funcionalidades
-
--**Link para o vídeo** https://www.youtube.com/watch?v=cSbDV5AMkCE
