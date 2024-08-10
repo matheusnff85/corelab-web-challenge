@@ -47,7 +47,7 @@ export function ColorPicker({
     closeColorPicker(true);
   };
   return (
-    <div className="absolute bg-white p-2 rounded-md border border-zinc-200 shadow-md z-10 top-2 left-4 mt-8 grid md:grid-cols-12 gap-2 min-w-max ">
+    <div className="absolute bg-white p-2 rounded-md border border-zinc-200 shadow-md z-10 top-2 left-4 mt-8 grid lg:grid-cols-12 grid-cols-6 gap-2 min-w-max ">
       {colors
         .filter((color) => color !== taskColor)
         .map((color, index) => (
